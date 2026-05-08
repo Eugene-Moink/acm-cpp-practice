@@ -6,36 +6,67 @@ int main()
 {
     int N, K;
     cin >> N >> K;
+    
     map<long long, long long> cnt;
-    long long sum = 0;
-
-    for (int i = 0;i < N; i++){
-
-        long long num;
-        cin >> num;
-        sum += num;
-        cnt[num]++;
+    for (int i = 0; i < N; i++) {
+        long long x;
+        cin >> x;
+        cnt[x]++;
     }
-
-    for (int op = 0; op < K; op++)
-    {
-        long long max_freq = 0;
-        long long target_val = 0;
-        
-        for (auto& p : cnt) {
-            if (p.second > max_freq) {
-                max_freq = p.second;
-                target_val = p.first;
-            }
-        }
-
-        sum -= target_val * max_freq;
-        cnt.erase(target_val);
+    
+    long long total_sum = 0;
+    for (auto& p : cnt) {
+        total_sum += p.first * p.second;
     }
-
-    cout << sum << endl;
+    
+    priority_queue<pair<long long, long long>> pq;
+    for (auto& p : cnt) {
+        pq.push({p.first * p.second, p.first});
+    }
+    
+    for (int op = 0; op < K && !pq.empty(); op++) {
+        total_sum -= pq.top().first;  // C++11兼容写法
+        pq.pop();
+    }
+    
+    cout << total_sum << endl;
     return 0;
 }
+
+// int main()
+// {
+//     int N, K;
+//     cin >> N >> K;
+//     map<long long, long long> cnt;
+//     long long sum = 0;
+
+//     for (int i = 0;i < N; i++){
+
+//         long long num;
+//         cin >> num;
+//         sum += num;
+//         cnt[num]++;
+//     }
+
+//     for (int op = 0; op < K; op++)
+//     {
+//         long long max_freq = 0;
+//         long long target_val = 0;
+        
+//         for (auto& p : cnt) {
+//             if (p.second > max_freq) {
+//                 max_freq = p.second;
+//                 target_val = p.first;
+//             }
+//         }
+
+//         sum -= target_val * max_freq;
+//         cnt.erase(target_val);
+//     }
+
+//     cout << sum << endl;
+//     return 0;
+// }
 
     //     for (int i = 1; i <= N;i++){
     //     int number;
