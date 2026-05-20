@@ -1,4 +1,7 @@
-A_455.cpp
-A_Dice.cpp
-binary_search.cpp
-prime_check.cpp
+#include<bits/stdc++.h>
+#define endl "\n"
+using namespace std;
+int main()
+{
+    
+}
