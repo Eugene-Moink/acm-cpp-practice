@@ -19,13 +19,14 @@
 
 ## 📊 OJ 题解统计（截至 2025-04）
 
-| 平台       | 用户名         | 已解决题数 | 备注                     |
-|------------|----------------|------------|--------------------------|
-| [Codeforces](https://codeforces.com/profile/X_moink) | `X_moink`      | 7          |                          |
-| [AtCoder](https://atcoder.jp/users/Morgann)           | `Morgann`      | 9          |                          |
-| [洛谷](https://www.luogu.com.cn/user/100000000)        | `Morgann`      | 233        | （含部分模拟赛 & 月赛） |
-| [牛客](https://www.nowcoder.com/profile/308284897)    | `308284897`    | 21         |                          |
+| 平台       | 用户名         | 已解决题数 | 累计总和 | 备注                     |
+|------------|----------------|------------|----------|--------------------------|
+| [Codeforces](https://codeforces.com/profile/X_moink) | `X_moink`      | 7          | 7        |                          |
+| [AtCoder](https://atcoder.jp/users/Morgann)           | `Morgann`      | 9          | 16       |                          |
+| [洛谷](https://www.luogu.com.cn/user/100000000)        | `Morgann`      | 233        | 249      | （含部分模拟赛 & 月赛） |
+| [牛客](https://www.nowcoder.com/profile/308284897)    | `308284897`    | 21         | **270**  |                          |
 
+✅ **累计总和：270 题**
 
 ## 🏆 里程碑记录
 
