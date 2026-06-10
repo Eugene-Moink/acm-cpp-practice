@@ -1,24 +1,28 @@
 #include<bits/stdc++.h>
 #define endl "\n"
+using ll = long long;
 using namespace std;
 
 int main()
 {
-    long long number;
+    ll number;
     cin >> number;
-    vector<pair<long long, long long>> result;
+    vector<pair<ll, ll>> result;
 
-    for (long long k = 2; k <= sqrt(number * 2);k++)
+    for (ll k = 2; k <= sqrt(number * 2);k++)
     {
-        long long numerator = (2 * number) / k - k + 1;
+        ll numerator = (2 * number) / k - k + 1;
         if(numerator > 0 && numerator % 2 == 0)
         {
-            if ((2 * number) % k != 0) continue;
-            long long a = numerator / 2;
+            if ((2 * number) % k != 0) 
+            continue;
+
+            ll a = numerator / 2;
+
             if (a >= 1)
             {
-                long long start = a;
-                long long end = a + k - 1;
+                ll start = a;
+                ll end = a + k - 1;
                 result.push_back({start, end});
             }
         }
