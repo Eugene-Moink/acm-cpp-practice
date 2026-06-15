@@ -19,6 +19,8 @@ int main()
         number[i] = temp_number;
     }
 
+    sort(number.begin(), number.end());
+
     for (int j = 1; j <= q; j++)
     {
         int need_number;
@@ -27,22 +29,17 @@ int main()
         int min_greater = -1;
         int max_less = -1;
         
-        for (int k = 0; k < number.size(); k++)
+        auto itGreater = upper_bound(number.begin(), number.end(), need_number);
+        if (itGreater != number.end())
         {
-            if (number[k] > need_number)
-            {
-                if (min_greater == -1 || number[k] < min_greater) 
-                {
-                    min_greater = number[k];
-                }
-            }
-            if (number[k] < need_number) 
-            {
-                if (max_less == -1 || number[k] > max_less) 
-                {
-                    max_less = number[k];
-                }
-            }
+            min_greater = *itGreater;
+        }
+
+        auto itLess = lower_bound(number.begin(), number.end(), need_number);
+        if (itLess != number.begin())
+        {
+            --itLess;
+            max_less = *itLess;
         }
         
         cout << min_greater << " " << max_less << endl;
