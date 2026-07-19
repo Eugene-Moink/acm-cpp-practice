@@ -1,54 +1,52 @@
 #include<bits/stdc++.h>
 #define endl "\n"
+using ll = long long;
 using namespace std;
 
-void to_lowercase(string &s) 
+void moink()
 {
-    transform(s.begin(), s.end(), 
-            s.begin(), [](unsigned char c) { return tolower(c); });
+    string word;
+    cin >> word;
+
+    cin.ignore();
+    string text;
+    getline(cin, text);
+
+    transform(word.begin(), word.end(), word.begin(), ::tolower);
+    transform(text.begin(), text.end(), text.begin(), ::tolower);
+
+    ll cnt = 0;
+    ll first_pos = -1;
+
+    size_t pos = 0;
+
+    while((pos=text.find(word,pos))!=string::npos)
+    {
+        bool left_ok = (pos == 0 || text[pos - 1] == ' ');
+        ll len = word.size();
+        bool right_ok = ((pos + len == (ll)text.size()) || text[pos + len] == ' ');
+
+        if (left_ok && right_ok)
+        {
+            cnt++;
+            if(first_pos==-1)
+                first_pos = pos;
+        }
+        pos = pos + word.size();
+    }
+
+    if(cnt==0)
+    {
+        cout << "-1" << endl;
+    }
+    else
+    {
+        cout << cnt << " " << first_pos << endl;
+    }
 }
 
 int main()
 {
-    string to_find;
-    getline(cin, to_find);  
-
-    string str;
-    getline(cin, str);      
-
-    to_lowercase(to_find);
-    to_lowercase(str);
-
-    size_t pos = 0;
-    int count = 0;
-    int first_pos = -1;
-
-    while (true) 
-    {
-        pos = str.find(to_find, pos);
-        if (pos == string::npos) break;
-        
-        bool left_ok = (pos == 0) || (str[pos-1] == ' ');
-        bool right_ok = (pos + to_find.length() == str.length()) || 
-                (str[pos + to_find.length()] == ' ');
-        
-        if (left_ok && right_ok) {
-            count++;
-            if (first_pos == -1) first_pos = pos;
-        }
-        
-        // 更新pos
-        pos = to_find.length();
-    }
-
-        if (count == 0) 
-        {
-            cout << -1 << endl;
-        } 
-        else 
-        {
-            cout << count << " " << first_pos << endl;
-        }
-
+    moink();
     return 0;
 }
