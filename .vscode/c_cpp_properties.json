@@ -11,9 +11,10 @@
                 "_UNICODE"
             ],
             "cStandard": "c17",
-            "cppStandard": "c++17",  
+            "cppStandard": "gnu++14",
             "intelliSenseMode": "windows-gcc-x64"
         }
     ],
     "version": 4
 }
+
