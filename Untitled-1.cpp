@@ -7,7 +7,6 @@ void moink()
 {
     ll n, m, s;
     cin >> n >> m >> s;
-
     vector<vector<pair<ll, ll>>> adj(n + 1);
     for (ll i = 0; i < m;i++)
     {
@@ -15,21 +14,22 @@ void moink()
         cin >> u >> v >> w;
         adj[u].push_back({v, w});
     }
-
     vector<ll> dist(n + 1, 1e18);
     dist[s] = 0;
 
-    priority_queue<pair<ll, ll>, vector<pair<ll, ll>>, greater<pair<ll, ll>>> pq;
+    priority_queue < pair<ll, ll>, vector<pair<ll, ll>>, greater<pair<ll, ll>>> pq;
     pq.push({0, s});
     while(!pq.empty())
     {
         auto top = pq.top();
         pq.pop();
 
-        ll u = top.second, d = top.first;
-
+        ll u = top.second;
+        ll d = top.first;
         if (d != dist[u])
-        continue;
+        {
+            continue;
+        }
 
         for (auto &edge : adj[u])
         {
@@ -51,10 +51,4 @@ void moink()
             cout << " ";
         }
     }
-}
-
-int main()
-{
-    moink();
-    return 0;
 }
