@@ -3,57 +3,61 @@
 using ll = long long;
 using namespace std;
 
+int gcd(int a,int b)
+{
+    return b ? gcd(b, a % b) : a;
+}
+
+vector<int> coprime[1005];
+void init()
+{
+    for (int i = 1; i <= 1000; i++)
+    {
+        for (int j = 1; j <= 1000;j++)
+        {
+            if (gcd(i, j) == 1)
+            {
+                coprime[i].push_back(j);
+            }
+        }
+    }
+}
+
 void moink()
 {
     int n;
     cin >> n;
-    vector<int> first(1005, 0), second(1005, 0); 
-    
+    vector<int> last_pos(1005, 0);
+
     for (int i = 1; i <= n; i++)
     {
         int x;
         cin >> x;
-        if (i > first[x]) 
-        {
-            second[x] = first[x];
-            first[x] = i;
-        } 
-        else if (i > second[x]) 
-        {
-            second[x] = i;
-        }
+        last_pos[x] = i;
     }
 
-    int ans = 0;
-    for (int i = 1; i <= 1000; i++) 
+    int ans = -1;
+    for (int i = 1; i <= 1000;i++)
     {
-        for (int j = 1; j <= 1000; j++)
-        {
-            if (first[i] == 0 || first[j] == 0) continue;
+        if (last_pos[i] == 0)
+        continue;
 
-            if (__gcd(i, j) == 1)
+        for(int k : coprime[i])
+        {
+            if(last_pos[k] != 0)
             {
-                if (i == j) 
-                {
-                    if (second[i] == 0) continue;
-                    ans = max(ans, first[i] + second[i]);
-                }
-                else 
-                {
-                    ans = max(ans, first[i] + first[j]);
-                }
+                ans = max(ans, last_pos[i] + last_pos[k]);
             }
         }
     }
-
-    if (ans == 0) cout << -1 << endl; 
-    else cout << ans << endl;
+    cout << ans << endl;
 }
 
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
+    init();
     int t;
     cin >> t;
     while(t--)
