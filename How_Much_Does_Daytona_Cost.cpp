@@ -3,16 +3,20 @@ using ll = long long;
 using namespace std;
 void moink()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    ll ans = 0;
+    int n, k;
+    cin >> n >> k;
+    int cnt = 0;
     for (int i = 0; i < n;i++)
     {
-        cin >> a[i];
-        ans += a[i];
+        int x;
+        cin >> x;
+        if(x == k &&cnt >= 2)
+        {
+            cout << "Yes\n";
+            return;
+        }
     }
-    cout << ans - (n - 1) << '\n';
+    cout << "NO\n";
 }
 
 int main()

@@ -1,18 +1,13 @@
 #include<bits/stdc++.h>
-using ll = long long;
 using namespace std;
 void moink()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
-    ll ans = 0;
-    for (int i = 0; i < n;i++)
+    for (int i = 1; i <= n; i++) 
     {
-        cin >> a[i];
-        ans += a[i];
+        cout << 2 * i - 1 << (i == n ? '\n' : ' ');
     }
-    cout << ans - (n - 1) << '\n';
 }
 
 int main()
