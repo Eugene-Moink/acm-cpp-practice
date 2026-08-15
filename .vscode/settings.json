@@ -1,4 +1,4 @@
 {
     "C_Cpp.default.compilerPath": "D:/tdm64_gcc/bin/g++.exe",
-    "C_Cpp.errorSquiggles": "enabledIfIncludesResolve"
+    "C_Cpp.errorSquiggles": "disabled"
 }

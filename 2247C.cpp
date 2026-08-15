@@ -8,6 +8,7 @@ void moink()
     cin >> n;
     vector<int> a(n);
     vector<int> b(n);
+<<<<<<< HEAD
     for (int i = 0; i < n; ++i)
     {
         cin >> a[i];
@@ -49,6 +50,8 @@ void moink()
     }
 
     cout << (x % 2 ? 1 : 2) << '\n';
+=======
+>>>>>>> d9e7a68e0c928034a6b520921a3d8e91873562ec
 }
 
 int main()
