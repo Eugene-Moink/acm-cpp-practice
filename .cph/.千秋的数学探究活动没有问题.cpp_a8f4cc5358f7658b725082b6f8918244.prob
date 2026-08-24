@@ -1,0 +1,1 @@
+{"name":"Local: 千秋的数学探究活动没有问题","url":"c:\\Users\\墨轩\\acm-cpp-practice\\千秋的数学探究活动没有问题.cpp","tests":[{"id":1787483173341,"input":"3 3\n12 34 56","output":"201"},{"id":1787483182841,"input":"5 2\n100 200 30 4 5","output":"393"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\墨轩\\acm-cpp-practice\\千秋的数学探究活动没有问题.cpp","group":"local","local":true}

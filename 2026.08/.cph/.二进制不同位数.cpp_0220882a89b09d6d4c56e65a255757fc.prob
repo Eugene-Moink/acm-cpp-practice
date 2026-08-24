@@ -1,0 +1,1 @@
+{"name":"Local: 二进制不同位数","url":"c:\\Users\\墨轩\\acm-cpp-practice\\2026.08\\二进制不同位数.cpp","tests":[{"id":1787385776924,"input":"15 8","output":"3"},{"id":1787385779762,"input":"7 10","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\墨轩\\acm-cpp-practice\\2026.08\\二进制不同位数.cpp","group":"local","local":true}
