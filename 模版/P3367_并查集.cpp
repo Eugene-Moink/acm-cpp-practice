@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 #define endl "\n"
 using ll = long long;
 using namespace std;
@@ -8,7 +8,7 @@ ll fa[MAXN];
 
 void init(ll n)
 {
-    for (ll i = 0; i <= n;i++)
+    for (ll i = 0; i <= n; i++)
     {
         fa[i] = i;
     }
@@ -23,11 +23,11 @@ ll find(ll x)
     return fa[x] = find(fa[x]);
 }
 
-void merge(ll x,ll y)
+void merge(ll x, ll y)
 {
     ll fx = find(x);
     ll fy = find(y);
-    if(fx!=fy)
+    if (fx != fy)
     {
         fa[fx] = fy;
     }
@@ -39,7 +39,7 @@ void moink()
     cin >> n >> m;
 
     init(n);
-    while(m--)
+    while (m--)
     {
         char op;
         ll x, y;
@@ -50,9 +50,9 @@ void moink()
             merge(x, y);
         }
 
-        else if(op=='2')
+        else if (op == '2')
         {
-            if(find(x)==find(y))
+            if (find(x) == find(y))
             {
                 cout << "Y" << endl;
             }
