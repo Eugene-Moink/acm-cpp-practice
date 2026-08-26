@@ -1,32 +1,32 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-int main()
+using ll = long long;
+
+// 最大连续子段和（Kadane算法）
+// 要求：子段严格非空；全负数时，返回最大的那个负数
+// 复杂度：O(N)时间，O(1)空间
+ll max_subarray_sum(const vector<ll> &a)
 {
-    int n;
-    cin >> n;
-    vector<int> number(n);
-    for (int i = 0; i < n;i++)
-    {
-        cin >> number[i];
-    }
+    ll cur = 0;
+    ll best = LLONG_MIN; // 初始化为极小值，防止全负数出错
 
-    long long max_num = 0;
-    long long current_sum = 0;
-
-    for (int i = 0; i < n;i++)
+    for (ll x : a)
     {
-        
-        current_sum += number[i];
-        if(current_sum>max_num)
+        cur += x;
+        if (cur > best)
         {
-            max_num = current_sum;
+            best = cur;
         }
-        if(current_sum<0)
+        if (cur < 0)
         {
-            current_sum = 0;
+            cur = 0;
         }
     }
-
-    cout << max_num << endl;
-    return 0;
+    return best;
 }
+
+// 使用示例：
+// int n; cin >> n;
+// vector<ll> a(n);
+// for (int i = 0; i < n; i++) cin >> a[i];
+// cout << max_subarray_sum(a) << '\n';
