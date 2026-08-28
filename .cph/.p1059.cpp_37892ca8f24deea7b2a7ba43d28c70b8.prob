@@ -1,0 +1,1 @@
+{"name":"Local: p1059","url":"c:\\Users\\墨轩\\acm-cpp-practice\\p1059.cpp","tests":[{"id":1787798726445,"input":"39 200 4","output":"No\n197"},{"id":1787798738578,"input":"36 255 10","output":"Yes\n6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\墨轩\\acm-cpp-practice\\p1059.cpp","group":"local","local":true}

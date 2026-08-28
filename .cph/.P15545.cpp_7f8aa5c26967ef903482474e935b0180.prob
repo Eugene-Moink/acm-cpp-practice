@@ -1,0 +1,1 @@
+{"name":"Local: P15545","url":"c:\\Users\\墨轩\\acm-cpp-practice\\P15545.cpp","tests":[{"id":1787737718119,"input":"3 5 3\n0 -1 1\n","output":"3\n"},{"id":1787737734751,"input":"3 4 2\n0 -1 1\n","output":"-1\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\墨轩\\acm-cpp-practice\\P15545.cpp","group":"local","local":true}
