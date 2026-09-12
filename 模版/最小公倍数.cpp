@@ -1,14 +1,51 @@
+/*
+ * =====================================================
+ * 数论综合模板：素数筛 + 质因数分解 + 快速幂 + 最小公倍数
+ * =====================================================
+ *
+ * 【模块一：素数筛（埃氏筛）】
+ * 用途：预处理出 [0, n] 范围内的所有素数，存入全局数组 primes。
+ * 参数：n (int) — 筛的上限。通常取 sqrt(最大待分解数)。
+ *       如数据范围 1e9，取 31623。
+ * 复杂度：时间 O(n log log n)，空间 O(n)。
+ *
+ * 【模块二：质因数分解】
+ * 用途：将正整数 x 分解为质因数的幂次乘积。
+ * 参数：x (ll) — 待分解的整数。
+ * 返回：unordered_map<ll, ll> — key 为质因子，value 为对应指数。
+ * 前置：必须先调用 init_primes(sqrt(最大值)) 预处理素数表。
+ * 复杂度：时间 O(sqrt(x) / log x)。
+ *
+ * 【模块三：快速幂（模运算）】
+ * 用途：计算 base 的 exp 次幂对 mod 取模的结果。
+ * 参数：base (ll) 底数；exp (ll) 指数；mod (ll) 模数。
+ * 复杂度：时间 O(log exp)，空间 O(1)。
+ *
+ * 【模块四：求一组数的最小公倍数（LCM）并对 mod 取模】
+ * 用途：给定整数数组，求它们的最小公倍数并对 mod 取模。
+ * 核心思想：LCM = 所有质因子在数组中出现的最大指数的乘积。
+ * 参数：nums (vector<ll>&) 数组；mod (ll) 模数。
+ * 返回：ll — 最小公倍数模 mod 的结果。
+ * 复杂度：时间 O(n * sqrt(x) / log x)，空间 O(质因子个数)。
+ *
+ * 【重要前置】
+ * 使用前必须先调用 init_primes(上限) 预处理素数表。
+ * 上限取 sqrt(数组中最大可能值)。例如最大数 ≤ 1e9 时取 31623。
+ *
+ * 【如何适配多组测试数据】
+ * 默认只跑 1 组数据。如果题目输入文件含多组独立的测试用例
+ * （例如第一行给定总组数 T），把 main() 函数中 // cin >> T;
+ * 前面的注释去掉即可。
+ * =====================================================
+ */
+
 #include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
 
-/* =====================================================
-预处理模板：素数筛（埃氏筛）
-【用途】预处理出 [0, n] 范围内的所有素数，存入全局数组 primes。
-【参数】n (int): 筛的上限。通常取 sqrt(最大待分解数)。如数据范围 1e9，取 31623。
-【复杂度】时间复杂度 O(n log log n)，空间复杂度 O(n)。
-===================================================== */
 const int MAX_SQRT = 100000;
+const ll MOD = 998244353;
+
 vector<int> primes;
 bool is_prime[MAX_SQRT + 1];
 
@@ -32,14 +69,6 @@ void init_primes(int n)
     }
 }
 
-/* =====================================================
-运算模板：质因数分解
-【用途】将正整数 x 分解为质因数的幂次乘积。
-【参数】x (ll): 待分解的整数。
-【返回值】unordered_map<ll, ll>: key为质因子，value为对应的指数。
-【前置条件】必须先调用 init_primes(sqrt(最大值)) 预处理出素数表。
-【复杂度】时间复杂度 O(sqrt(x) / log x)。
-===================================================== */
 unordered_map<ll, ll> factorize(ll x)
 {
     unordered_map<ll, ll> exp;
@@ -63,12 +92,6 @@ unordered_map<ll, ll> factorize(ll x)
     return exp;
 }
 
-/* =====================================================
-运算模板：快速幂（模运算）
-【用途】计算 base 的 exp 次幂对 mod 取模的结果。
-【参数】base (ll): 底数；exp (ll): 指数；mod (ll): 模数。
-【复杂度】时间复杂度 O(log exp)，空间复杂度 O(1)。
-===================================================== */
 ll fast_pow(ll base, ll exp, ll mod)
 {
     ll res = 1;
@@ -83,14 +106,6 @@ ll fast_pow(ll base, ll exp, ll mod)
     return res;
 }
 
-/* =====================================================
-通用问题模板：求一组数的最小公倍数（LCM）
-【用途】给定一个整数数组，求出它们的最小公倍数，并对 mod 取模。
-【参数】nums (vector<ll>&): 数组；mod (ll): 模数。
-【返回值】ll: 最小公倍数模 mod 的结果。
-【核心思想】LCM = 所有质因子在数组中出现的最大指数的乘积。
-【复杂度】时间复杂度 O(n * sqrt(x) / log x)，空间复杂度 O(质因子个数)。
-===================================================== */
 ll get_lcm_mod(const vector<ll> &nums, ll mod)
 {
     unordered_map<ll, ll> max_exp;
@@ -111,24 +126,32 @@ ll get_lcm_mod(const vector<ll> &nums, ll mod)
     return ans;
 }
 
-/* ==================== 调用示例 ==================== */
-const ll MOD = 998244353;
+void solve()
+{
+    int n;
+    if (!(cin >> n))
+        return;
+
+    vector<ll> nums(n);
+    for (int i = 0; i < n; ++i)
+        cin >> nums[i];
+
+    cout << get_lcm_mod(nums, MOD) << "\n";
+}
 
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    init_primes(31623); // 假设数据范围 ≤ 1e9，sqrt(1e9) ≈ 31623
+    init_primes(31623);
 
-    int n;
-    cin >> n;
-    vector<ll> nums(n);
-    for (int i = 0; i < n; ++i)
-        cin >> nums[i];
-
-    // 直接调用 LCM 模板
-    cout << get_lcm_mod(nums, MOD) << endl;
+    int T = 1;
+    // cin >> T;
+    while (T--)
+    {
+        solve();
+    }
 
     return 0;
 }
