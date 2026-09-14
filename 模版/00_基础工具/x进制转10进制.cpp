@@ -2,20 +2,22 @@
 using namespace std;
 using ll = long long;
 
-int val(char c) {
-    if ('0' <= c && c <= '9') 
-    return c - '0';
+int val(char c)
+{
+    if ('0' <= c && c <= '9')
+        return c - '0';
 
-    if ('A' <= c && c <= 'Z') 
-    return c - 'A' + 10;
+    if ('A' <= c && c <= 'Z')
+        return c - 'A' + 10;
 
-    if ('a' <= c && c <= 'z') 
-    return c - 'a' + 10; 
+    if ('a' <= c && c <= 'z')
+        return c - 'a' + 10;
 
     return -1;
 }
 
-int main() {
+int main()
+{
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
@@ -24,7 +26,8 @@ int main() {
     cin >> x >> S;
 
     ll ans = 0;
-    for (char c : S) {
+    for (char c : S)
+    {
         int d = val(c);
         ans = ans * x + d;
     }
