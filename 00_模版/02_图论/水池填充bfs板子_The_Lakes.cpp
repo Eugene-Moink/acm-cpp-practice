@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-using ll = long long;
-
 /* =====================================================
 BFS 连通块模板（二维网格）
 
@@ -22,16 +18,8 @@ BFS 连通块模板（二维网格）
   queue<pair<int, int>>: 存放待扩展的坐标。
   dx[4], dy[4]: 四方向移动（上下左右）。若需八方向（含对角线），需扩为 8 个方向数组。
 
-【复杂度】
-  时间复杂度 O(n * m)（每个格子最多被访问一次），空间复杂度 O(n * m)。
-
-【易错提醒】
-  1. 必须检查起点坐标是否越界，以及起点是否已被访问。
-  2. 方向数组的越界判断 `n_x < 0 || n_x >= n || n_y < 0 || n_y >= m` 千万不能少。
-  3. 入队时就要标记 visited，防止同一个点重复入队。
-  4. 若题目要求 8 邻域，需将方向数组改为 8 个，如 {-1,-1}, {-1,0}, {-1,1}, {0,-1}, {0,1}, {1,-1}, {1,0}, {1,1}。
 ===================================================== */
-ll bfs_component(int startX, int startY, int n, int m, vector<vector<int>> &grid, vector<vector<bool>> &visited)
+ll bfs(int startX, int startY, int n, int m, vector<vector<int>> &grid, vector<vector<bool>> &visited)
 {
     if (startX < 0 || startX >= n || startY < 0 || startY >= m)
         return 0;
@@ -70,49 +58,4 @@ ll bfs_component(int startX, int startY, int n, int m, vector<vector<int>> &grid
         }
     }
     return sum;
-}
-
-/* ==================== 调用示例（原题逻辑） ==================== */
-void moink()
-{
-    int n, m;
-    cin >> n >> m;
-    vector<vector<int>> grid(n, vector<int>(m, 0));
-    for (int i = 0; i < n; ++i)
-    {
-        for (int j = 0; j < m; ++j)
-        {
-            cin >> grid[i][j];
-        }
-    }
-
-    vector<vector<bool>> visited(n, vector<bool>(m, false));
-    ll ans = 0;
-
-    for (int i = 0; i < n; ++i)
-    {
-        for (int j = 0; j < m; ++j)
-        {
-            if (grid[i][j] != 0 && !visited[i][j])
-            {
-                ll curSum = bfs_component(i, j, n, m, grid, visited);
-                ans = max(ans, curSum);
-            }
-        }
-    }
-    cout << ans << "\n";
-}
-
-int main()
-{
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        moink();
-    }
-    return 0;
 }

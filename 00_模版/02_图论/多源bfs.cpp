@@ -1,19 +1,3 @@
-/*
- * 多源 BFS
- *
- * 输入：H, W 网格；grid 字符数组；start_char 起点字符；obstacle 障碍字符（可选）
- * 输出：H×W 的 dist 数组，dist[i][j] 表示到最近起点的距离
- * 复杂度：O(H * W)
- *
- * 默认 4 邻域，改成 8 邻域：把循环 k < 4 改成 k < 8，换用 dx8 / dy8
- *
- * 多组数据：取消 main 中 // cin >> T; 的注释
- */
-
-#include <bits/stdc++.h>
-using namespace std;
-using ll = long long;
-
 const int INF = 1e9;
 
 int dx4[4] = {1, -1, 0, 0};
@@ -97,19 +81,4 @@ void solve()
         }
         cout << "\n";
     }
-}
-
-int main()
-{
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    int T = 1;
-    // cin >> T;
-    while (T--)
-    {
-        solve();
-    }
-
-    return 0;
 }
