@@ -8,21 +8,21 @@ void solve()
     cin >> n;
     vector<int> a(n);
     for (int &x : a)
+    {
         cin >> x;
-
-    int m;
-    cin >> m;
-    vector<int> b(m);
-    for (int &x : b)
-        cin >> x;
+    }
 
     vector<int> pref(n + 1, 0);
     for (int i = 1; i <= n; i++)
         pref[i] = pref[i - 1] + a[i - 1];
 
-    for (int q : b)
+    int m;
+    cin >> m;
+    while (m--)
     {
-        int pos = lower_bound(pref.begin() + 1, pref.end(), q) - pref.begin();
+        int tmp;
+        cin >> tmp;
+        int pos = lower_bound(pref.begin(), pref.end(), tmp) - pref.begin();
         cout << pos << '\n';
     }
 }
