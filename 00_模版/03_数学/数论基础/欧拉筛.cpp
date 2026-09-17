@@ -10,10 +10,6 @@
  * 多组数据：取消 main 中 // cin >> T; 的注释
  */
 
-#include <bits/stdc++.h>
-using namespace std;
-using ll = long long;
-
 vector<bool> is_prime;
 vector<int> prime;
 
@@ -51,19 +47,4 @@ void solve()
     cin >> k;
     cout << prime[k - 1] << "\n";
   }
-}
-
-int main()
-{
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
-
-  int T = 1;
-  // cin >> T;
-  while (T--)
-  {
-    solve();
-  }
-
-  return 0;
 }
