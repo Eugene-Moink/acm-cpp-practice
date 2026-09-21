@@ -19,7 +19,6 @@ void solve()
     cout << pref[r] - pref[l - 1] << "\n";
 
     // ==================== 一维差分 ====================
-    // 给区间 [l, r] 每个数加 val
     vector<ll> diff(n + 2, 0);
     int q;
     cin >> q;
@@ -32,7 +31,6 @@ void solve()
         diff[R + 1] -= val;
     }
 
-    // 还原数组
     vector<ll> restored(n, 0);
     ll cur = 0;
     for (int i = 0; i < n; i++)
@@ -67,7 +65,6 @@ void solve()
     cout << pref2[x2][y2] - pref2[x1 - 1][y2] - pref2[x2][y1 - 1] + pref2[x1 - 1][y1 - 1] << "\n";
 
     // ==================== 二维差分 ====================
-    // 给子矩阵 (x1, y1) 到 (x2, y2) 每个数加 val
     vector<vector<ll>> diff2(H + 2, vector<ll>(W + 2, 0));
     int q2;
     cin >> q2;
@@ -82,7 +79,6 @@ void solve()
         diff2[X2 + 1][Y2 + 1] += val;
     }
 
-    // 还原矩阵
     vector<vector<ll>> ans2(H, vector<ll>(W, 0));
     for (int i = 0; i < H; i++)
     {

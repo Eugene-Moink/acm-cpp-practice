@@ -37,7 +37,7 @@ void solve()
         }
 
         swap(a[col], a[pivot]);
-        化 double div = a[col][col];
+        double div = a[col][col];
         for (int j = col; j <= n; j++)
             a[col][j] /= div;
 

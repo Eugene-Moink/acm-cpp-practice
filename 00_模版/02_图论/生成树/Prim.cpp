@@ -27,7 +27,6 @@ void solve()
         int u, v;
         ll w;
         cin >> u >> v >> w;
-        // 有重边取最小值
         g[u][v] = min(g[u][v], w);
         g[v][u] = min(g[v][u], w);
     }

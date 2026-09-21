@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-using ll = long long;
-
 /* =====================================================
 二进制位运算模板（GCC内置函数版）
 
@@ -34,31 +30,23 @@ void solve()
     ll x;
     cin >> x;
 
-    // 特判边界：0无激活通道
     if (x == 0)
     {
         cout << "0 -1 -1" << '\n';
         return;
     }
 
-    // 1. 统计 1 的个数
     ll one = __builtin_popcountll(x);
 
-    // 2. 最小编号（二进制末尾 0 的个数）
     ll min_one = __builtin_ctzll(x);
 
-    // 3. 最大编号（64 减去前导 0 的个数，再减 1）
     ll max_one = 63 - __builtin_clzll(x);
 
     cout << one << " " << min_one << " " << max_one << '\n';
 }
 
-/* ==================== 调用示例 ==================== */
-int main()
-{
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    solve();
-    return 0;
-}
+/* ==================== 调用示例（贴进自己的 main） ====================
+    cin >> x;                       // 例如 x = 0b101100
+    solve();                        // 输出：1 的个数 / 最低位 1 / 最高位 1
+    // x == 0 时输出 "0 -1 -1"
+==================================================================== */

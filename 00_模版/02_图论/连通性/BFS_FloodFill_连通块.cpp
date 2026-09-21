@@ -26,7 +26,6 @@ ll bfs(int startX, int startY, int n, int m, vector<vector<int>> &grid, vector<v
     if (visited[startX][startY] || grid[startX][startY] == 0)
         return 0;
 
-    // 四方向移动（上下左右）
     int dx[4] = {-1, 1, 0, 0};
     int dy[4] = {0, 0, -1, 1};
 

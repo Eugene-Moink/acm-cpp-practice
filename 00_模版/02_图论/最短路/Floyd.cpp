@@ -32,7 +32,6 @@ void solve()
         int u, v;
         ll w;
         cin >> u >> v >> w;
-        // 有重边取最小值
         dist[u][v] = min(dist[u][v], w);
         // 无向图请加上下面这行
         // dist[v][u] = min(dist[v][u], w);
