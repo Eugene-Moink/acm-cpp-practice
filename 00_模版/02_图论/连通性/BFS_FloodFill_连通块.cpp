@@ -1,25 +1,22 @@
 /* =====================================================
-BFS 连通块模板（二维网格）
+BFS 连通块（二维网格 Flood Fill）
 
 【用途】
-  在二维网格（如地图、矩阵）中，从某个起点出发，搜索所有连通且满足条件的格子。
-  常用于“求连通块大小”、“求连通块内数值之和”、“求最大连通块”等经典题目。
-
-【参数】
-  startX, startY (int): 起点坐标（0-based 下标）。
-  n, m (int): 网格行数和列数。
-  grid (vector<vector<int>>&): 存储网格数值，0 表示障碍或已访问，非 0 表示可通过。
-  visited (vector<vector<bool>>&): 标记数组，避免重复访问（也可直接用 grid 置 0，但用 visited 更通用且不破坏原数据）。
-
-【返回值】
-  ll: 该连通块内所有格子的数值之和（或格子的数量，取决于 grid 存储的内容）。
-
-【核心结构】
-  queue<pair<int, int>>: 存放待扩展的坐标。
-  dx[4], dy[4]: 四方向移动（上下左右）。若需八方向（含对角线），需扩为 8 个方向数组。
-
+  从起点出发向四方向扩散，求该连通块内格子的数值之和（也可改成计数或求最大块）。
+【输入】
+  startX, startY 起点坐标（0-based）；n, m 网格行列数；
+  grid 保存网格数值，0 表示障碍；visited 为访问标记数组。
+【输出】
+  ll，该连通块内所有格子的数值之和（grid 全存 1 时即为块大小）。
+【复杂度】
+  O(n·m)。
+【易错提醒】
+  1. 起点越界、已被访问或为障碍时返回 0，调用方不需要先判。
+  2. 入队时就置 visited，不要等出队再置，否则同一格子会重复入队。
+  3. 需要八方向时把 dx / dy 扩成 8 个方向数组。
+  4. 递归 flood fill 在 n·m 很大时会爆栈，此时必须用 BFS。
 ===================================================== */
-ll bfs(int startX, int startY, int n, int m, vector<vector<int>> &grid, vector<vector<bool>> &visited)
+ll flood_fill(int startX, int startY, int n, int m, vector<vector<int>> &grid, vector<vector<bool>> &visited)
 {
     if (startX < 0 || startX >= n || startY < 0 || startY >= m)
         return 0;

@@ -1,0 +1,122 @@
+## Codeforces (X_moink)  数据源: codeforces.com/api/user.status
+抓取到的提交记录: 509  时间范围: 2026-06-11 ~ 2026-10-07
+提交结果分布: {'OK': 251, 'WRONG_ANSWER': 227, 'COMPILATION_ERROR': 16, 'TIME_LIMIT_EXCEEDED': 9, 'MEMORY_LIMIT_EXCEEDED': 2, 'RUNTIME_ERROR': 4}
+尝试过的不同题目: 235  已 AC 题目: 234  通过率: 99.6%
+
+已 AC 题目的 CF 官方难度分布:
+   800- 899:  91  ############################################################
+   900- 999:  21  #####################
+  1000-1099:  24  ########################
+  1100-1199:  39  #######################################
+  1200-1299:  17  #################
+  1300-1399:  19  ###################
+  1400-1499:   8  ########
+  1500-1599:   3  ###
+  1700-1799:   2  ##
+  未标难度 : 10
+AC 难度分位: 25%=800 中位=1000 75%=1100 90%=1300 最高=1700
+
+一次 AC 题数: 127 / 234 = 54.3%
+AC 提交占全部提交: 49.3%
+
+已 AC 题目标签 top 25 (括号内为其中 >=1500 的题数):
+  greedy                          95 (3)
+  implementation                  94 (1)
+  math                            81 (0)
+  sortings                        42 (3)
+  brute force                     42 (0)
+  strings                         31 (0)
+  constructive algorithms         30 (0)
+  dp                              23 (1)
+  binary search                   21 (0)
+  data structures                 20 (0)
+  number theory                   18 (0)
+  two pointers                    18 (1)
+  dfs and similar                  9 (1)
+  games                            5 (0)
+  bitmasks                         5 (1)
+  geometry                         5 (0)
+  dsu                              4 (0)
+  graphs                           4 (0)
+  combinatorics                    2 (0)
+  hashing                          2 (0)
+  trees                            1 (0)
+  graph matchings                  1 (0)
+  *special                         1 (0)
+  shortest paths                   1 (0)
+
+未解出题目标签 (>=2 题): 无
+
+按月: 提交 / AC提交 / 单次AC率 / 新AC题数
+  2026-06    17   10   58.8%   10
+  2026-07   149   59   39.6%   59
+  2026-08   226  100   44.2%   97
+  2026-09    93   67   72.0%   60
+  2026-10    24   15   62.5%   15
+最近  7 天: 提交  24, 新 AC 题  15 (15.0 题/周)
+最近 30 天: 提交 108, 新 AC 题  70 (16.3 题/周)
+最近 60 天: 提交 179, 新 AC 题 107 (12.5 题/周)
+最近 90 天: 提交 491, 新 AC 题 224 (17.4 题/周)
+
+>=1500 的 AC 题目 (全部):
+  r=1700 2245 D1  Construct an Array (Easy Version)          | dfs and similar,implementation,sortings
+  r=1700 2252 D   Array Replacement                          | greedy,sortings
+  r=1500 2253 C   Sum of Distinct Values in a Matrix         | greedy,sortings,two pointers
+  r=1500 455  A   Boredom                                    | dp
+  r=1500 2269 D   What a SauSaGe! It's All Meat              | bitmasks,greedy
+
+最近 10 场正式比赛(rated)的 AC 题号:
+  contest 2269: ABD
+  contest 2267: ABCD
+  contest 2266: ABCD
+  contest 2264: AB
+  contest 2263: ABC1
+  contest 2260: ABC
+  contest 2259: ABC
+  contest 2258: AB1
+  contest 2257: ABC
+  contest 2253: AB
+
+## AtCoder (Morgann)  数据源: kenkoooo.com/atcoder-api + atcoder.jp/users/Morgann
+提交记录: 341  时间范围: 2026-04-06 ~ 2026-10-04
+结果分布: {'AC': 201, 'WA': 100, 'TLE': 5, 'RE': 5, 'CE': 30}
+AC 的不同题目数: 188  AC 提交数: 201
+ABC 各题号累计 AC 数: {'a': 43, 'b': 55, 'c': 35, 'd': 17, 'e': 1}
+
+最近 14 场 ABC 的 AC 题号 (含赛后补题):
+  abc478: ab
+  abc477: abc
+  abc476: abcd
+  abc475: abcd
+  abc474: abcd
+  abc473: abcd
+  abc472: abcd
+  abc471: abcde
+  abc470: abc
+  abc469: abc
+  abc468: a
+  abc467: ab
+  abc466: ab
+  abc465: ab
+历史 AC 过 D 题的 ABC 场次: 17 场 ['abc251', 'abc321', 'abc458', 'abc460', 'abc471', 'abc472', 'abc473', 'abc474', 'abc475', 'abc476']
+
+按月 AC 的不同题目数:
+  2026-04: 9
+  2026-05: 12
+  2026-07: 57
+  2026-08: 68
+  2026-09: 41
+  2026-10: 2
+
+## 洛谷 (uid 1887785, 昵称 X_moink)  数据源: luogu.com.cn/api/user/info/1887785
+通过题数 468 / 尝试过 940 = 通过率 49.8%
+ELO rating 662, 全站排名 7684, 颜色 Orange, 注册于 2025-09-25
+(洛谷未提供匿名可读的难度分布接口，submit/practice 页面返回 401 需登录)
+
+## 抓取方式与口径说明
+- Codeforces: codeforces.com/api/user.status（分页抓取后按提交 id 去重），按 problem(contestId,index) 去重统计题目；
+  "一次 AC" = 该题首次提交即为 OK；难度取 CF 官方 rating。
+- AtCoder: atcoder.jp/users/Morgann（rating/最高rating/排名）+ /users/Morgann/history/json（每场表现分）
+  + kenkoooo.com/atcoder/atcoder-api/v3/user/submissions（全部提交明细）。
+- 洛谷: luogu.com.cn/api/user/info/1887785（官方汇总字段：passedProblemCount / submittedProblemCount / eloValue / ranking）。
+- 抓取日期: 2026-10-07。
