@@ -1,18 +1,21 @@
 {
     "configurations": [
         {
-            "name": "Win32",
+            "name": "windows-gcc-x64",
             "includePath": [
-                "${default}"
+                "${workspaceFolder}/**"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
-            "cStandard": "c17",
+            // "windowsSdkVersion": "10.0.19041.0",
+            "compilerPath": "D:/TDM-GCC-64/bin/g++.exe", // 此处双引号内的 D:/TDM-GCC-64 改为刚才安装编译器的路径，后面的 /bin/g++.exe 不动
+            "cStandard": "c11",
             "cppStandard": "c++17",
-            "intelliSenseMode": "windows-gcc-x64"
+            "intelliSenseMode": "${default}",
+            "compilerArgs": []
         }
     ],
     "version": 4
