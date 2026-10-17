@@ -180,6 +180,29 @@ bool is_bracket_sequence_valid(const string &s)
     return st.empty();
 }
 
+/* ==================== 四、栈消除相邻相同对（消消乐 / 括号化简） ====================
+ * 适用：从左到右，若当前元素与栈顶「可抵消」就弹出栈顶，否则入栈；
+ *       最终栈里剩下的就是无法再消掉的部分。
+ * 变体：相邻相同消掉、相邻和为零消掉、相同则合并等，只改抵消条件。
+ * 对应题：old/字符串游戏.cpp、CF 1132F 类消消乐。
+ * ============================================================================= */
+string erase_adjacent_pairs(const string &s)
+{
+    string st;
+    for (char c : s)
+    {
+        if (!st.empty() && st.back() == c)
+        {
+            st.pop_back();          // 抵消
+        }
+        else
+        {
+            st.push_back(c);        // 入栈
+        }
+    }
+    return st;
+}
+
 /* ==================== 调用示例（贴进自己的 main） ====================
     string expr;
     getline(cin, expr);                          // 例：3 4 + 5 * .  -> 35

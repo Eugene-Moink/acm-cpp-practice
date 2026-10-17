@@ -102,6 +102,70 @@ ll max_net_profit(const vector<ll> &v, int k, vector<ll> &chosen)
     return ans;
 }
 
+/* ==================== 四、版本号懒删除堆：不真正删堆内元素，用版本号标记失效 ====================
+ * 适用：需要「删除任意元素 / 批量作废」，但不想写可删堆或重复维护两棵堆时。
+ * 做法：入堆时记录 (key, idx)，同时维护 ver[idx]；之后 idx 被更新或删除就把 ver[idx] 加一。
+ *       取堆顶前先 while 检查堆顶的版本号是否等于当前 ver[idx]，不等就弹出（懒删除）。
+ * 复杂度：每次失效 O(1)，每个元素最多被弹出一次，均摊 O(log n)。
+ * 对应题：CF 1067B 类「带删除的最短路 / 全局最小值」。
+ * ============================================================================ */
+struct LazyDeleteHeap
+{
+    // (key, idx, 入堆时的版本号)，小根堆按 key 排序
+    priority_queue<tuple<ll, int, int>, vector<tuple<ll, int, int>>,
+                   greater<tuple<ll, int, int>>>
+        pq;
+    vector<int> ver;
+
+    explicit LazyDeleteHeap(int n) : ver(n + 1, 0) {}
+
+    void push(int idx, ll key)
+    {
+        pq.push({key, idx, ver[idx]});
+    }
+
+    // 让 idx 之前的所有入堆记录全部失效
+    void erase(int idx)
+    {
+        ver[idx]++;
+    }
+
+    // 弹出所有失效的堆顶，使堆顶有效
+    void clean()
+    {
+        while (!pq.empty())
+        {
+            auto [key, idx, v] = pq.top();
+            if (v != ver[idx])
+            {
+                pq.pop();
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    bool empty()
+    {
+        clean();
+        return pq.empty();
+    }
+
+    pair<ll, int> top()
+    {
+        clean();
+        return {get<0>(pq.top()), get<1>(pq.top())};
+    }
+
+    void pop()
+    {
+        clean();
+        pq.pop();
+    }
+};
+
 /* ==================== 调用示例（贴进自己的 main） ====================
     int n;
     cin >> n;
