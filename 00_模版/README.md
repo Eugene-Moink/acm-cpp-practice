@@ -73,8 +73,8 @@ g++ -std=c++17 -O1 -o selftest selftest.cpp && ./selftest
 | `最大子段和_Kadane算法.cpp` | 最大子段和（`best` 初始化 `LLONG_MIN`） | O(n) |
 | `位运算_与或异或.cpp` | 按位与 / 或 / 异或，`solve()` 片段 | O(1) |
 | `位运算_GCC内置函数.cpp` | `__builtin_popcountll` / `ctzll` / `clzll`（含 `x == 0` 特判） | O(1) |
-| `离散化.cpp` | `Disc`：`add` / `build` / `id` / `val` / `size`，1-based 下标 | O(k log k) |
-| `离散化_二维.cpp` | `Disc2D` + `Rect`：矩形坐标离散化、格点覆盖、`rect_union_area` 矩阵并面积 | O(n²) |
+| `离散化.cpp` | **函数式（无结构体）**：`disc_build` / `disc_id`(1-based) / `disc_id0` / `disc_val` / `disc_size` | O(k log k) |
+| `离散化_二维.cpp` | **函数式（无结构体）**：`disc2d_add` / `disc2d_build` / `disc2d_ix` / `disc2d_iy` / `rect_union_area`，矩形表用 `array<ll,4>` | O(n²) |
 | `枚举_全排列.cpp` | `permutations_next`（`next_permutation` 版）/ `permutations_dfs`（回溯 + `used` 数组） | O(n!) |
 | `二分查找与二分答案.cpp` | 整数二分三写法 + `lower_bound`/`upper_bound` 对照 + 实数二分 + `binary_answer(lo, hi, check)` 框架 | O(log n) / O(log 值域) |
 | `双指针_尺取法.cpp` | 和 ≤ S 的最长区间、和 ≥ S 的最短区间、两有序数组双指针配对 | O(n) |
