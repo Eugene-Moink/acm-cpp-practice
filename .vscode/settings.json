@@ -3,5 +3,6 @@
     "C_Cpp.errorSquiggles": "disabled",
     "code-runner.executorMap": {
         "cpp": "cd $dir && g++ -std=c++17 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
-    }
+    },
+    "python-envs.defaultEnvManager": "ms-python.python:system"
 }
