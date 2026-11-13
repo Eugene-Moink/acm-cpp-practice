@@ -129,15 +129,46 @@ def at_stats():
     return out
 
 
+def local_recent(repo, days=14):
+    """扫仓库里近 N 天改过的 .cpp，给出「最近在做什么题」的构成。"""
+    import glob, re, collections
+    cutoff = time.time() - days * 86400
+    files = []
+    for pat in (os.path.join(repo, "*.cpp"), os.path.join(repo, "做题", "*", "*.cpp")):
+        for f in glob.glob(pat):
+            if os.path.getmtime(f) >= cutoff:
+                files.append((os.path.getmtime(f), f))
+    files.sort()
+    cat = collections.Counter()
+    rows = []
+    for mt, f in files:
+        name = os.path.basename(f)[:-4]
+        if re.fullmatch(r"\d+[A-Z]\d*", name):
+            c = "CF"
+        elif name.startswith(("abc", "arc", "agc", "joi", "abl", "jsc", "key", "pan", "sum", "ten", "dwa", "div")):
+            c = name[:3]
+        elif re.fullmatch(r"P\d+", name):
+            c = "洛谷"
+        else:
+            c = "其它"
+        cat[c] += 1
+        rows.append((time.strftime("%m-%d %H:%M", time.localtime(mt)), name, c))
+    return {"days": days, "count": len(files), "by_platform": dict(cat), "files": rows}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--json")
     ap.add_argument("--refresh", action="store_true")
+    ap.add_argument("--repo", help="仓库根目录，默认取脚本所在目录的上上级")
+    ap.add_argument("--days", type=int, default=14, help="本地做题统计回看天数")
     args = ap.parse_args()
 
     cf = cf_stats(args.refresh)
     at = at_stats()
-    res = {"cf": cf, "at": at, "pulled_at": time.strftime("%Y-%m-%d %H:%M")}
+    repo = args.repo or os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    loc = local_recent(repo, args.days) if os.path.isdir(repo) else None
+    res = {"cf": cf, "at": at, "local": loc, "pulled_at": time.strftime("%Y-%m-%d %H:%M")}
 
     if args.json:
         json.dump(res, open(args.json, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
@@ -166,6 +197,13 @@ def main():
     for name, old, new, perf in at["last5"]:
         print(f"      {old} → {new}  perf {perf}  {str(name)[:56]}")
     print("    近 12 场 ABC 题位: " + "  ".join(f"{k} {v}" for k, v in at["recent_abc"].items()))
+    print()
+    if loc:
+        print(f"本地做题（近 {loc['days']} 天改过的 .cpp）：{loc['count']} 道")
+        print("    构成: " + "  ".join(f"{k} {v}" for k, v in sorted(loc["by_platform"].items(), key=lambda kv: -kv[1])))
+        for d, name, c in loc["files"]:
+            print(f"      {d}  [{c}] {name}")
+        print("    提示：这里只有文件名，没有官方 rating；新场次的真题通常还没挂分。")
     print()
     print("洛谷：接口需登录（302），请手动填 ELO / 通过数。")
 
